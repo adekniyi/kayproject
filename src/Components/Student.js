@@ -128,8 +128,9 @@ export default function Student() {
               </div>
               <div class='col-8-xxxl col-12'>
                 <div class='row'>
+                  <div className="col-lg-12">
                   <div className="card-body mg-b-20">
-                  <div class='col-lg-6 form-group'>
+                  <div class='col-lg-12form-group'>
                   <label>Description</label>
                       <textarea
                         class='textarea form-control'
@@ -139,7 +140,7 @@ export default function Student() {
                         rows='9'
                       ></textarea>
                   </div>
-                  <div class='col-lg-6 form-group'>
+                  <div class='col-lg-12 form-group'>
                   <label>Date and Time *</label>
                       <input
                         type='text'
@@ -165,6 +166,8 @@ export default function Student() {
                       </button>
                     </div>
                     </div>
+                  </div>
+
                   <div class='col-lg-12'>
                     <div class='card dashboard-card-eleven'>
                         <div class="card height-auto">
