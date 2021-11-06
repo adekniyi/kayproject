@@ -128,106 +128,123 @@ export default function Student() {
               </div>
               <div class='col-8-xxxl col-12'>
                 <div class='row'>
-                  <div class='col-lg-4'>
-                    <div class='dashboard-summery-one'>
-                      <div class='row'>
-                        <div class='col-6'>
-                          <div class='item-icon bg-light-magenta'>
-                            <i class='flaticon-shopping-list text-magenta'></i>
-                          </div>
-                        </div>
-                        <div class='col-6'>
-                          <div class='item-content'>
-                            <div class='item-title'>Notification</div>
-                            <div class='item-number'>
-                              <span class='counter' data-num='12'>
-                                12
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                  <div className="card-body mg-b-20">
+                  <div class='col-lg-6 form-group'>
+                  <label>Description</label>
+                      <textarea
+                        class='textarea form-control'
+                        name='message'
+                        id='form-message'
+                        cols='10'
+                        rows='9'
+                      ></textarea>
                   </div>
-                  <div class='col-lg-4'>
-                    <div class='dashboard-summery-one'>
-                      <div class='row'>
-                        <div class='col-6'>
-                          <div class='item-icon bg-light-blue'>
-                            <i class='flaticon-calendar text-blue'></i>
-                          </div>
-                        </div>
-                        <div class='col-6'>
-                          <div class='item-content'>
-                            <div class='item-title'>Events</div>
-                            <div class='item-number'>
-                              <span class='counter' data-num='06'>
-                                06
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class='col-lg-4'>
-                    <div class='dashboard-summery-one'>
-                      <div class='row'>
-                        <div class='col-6'>
-                          <div class='item-icon bg-light-yellow'>
-                            <i class='flaticon-percentage-discount text-orange'></i>
-                          </div>
-                        </div>
-                        <div class='col-6'>
-                          <div class='item-content'>
-                            <div class='item-title'>Attendance</div>
-                            <div class='item-number'>
-                              <span class='counter' data-num='94'>
-                                94
-                              </span>
-                              <span>%</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                  <div class='col-lg-6 form-group'>
+                  <label>Date and Time *</label>
+                      <input
+                        type='text'
+                        placeholder='dd/mm/yyyy'
+                        class='form-control air-datepicker'
+                        data-position='bottom right'
+                      />
+                      <i class='far fa-calendar-alt'></i>
                   </div>
 
+                  <div class='col-12 form-group mg-t-8 mg-b-5'>
+                      <button
+                        type='submit'
+                        class='btn-fill-lg btn-gradient-yellow btn-hover-bluedark mg-r-12'
+                      >
+                        Save
+                      </button>
+                      <button
+                        type='reset'
+                        class='btn-fill-lg bg-blue-dark btn-hover-yellow'
+                      >
+                        Reset
+                      </button>
+                    </div>
+                    </div>
                   <div class='col-lg-12'>
                     <div class='card dashboard-card-eleven'>
-                      <div class='card-body'>
-                        <div class='heading-layout1'>
-                          <div class='item-title'>
-                            <h3>All Exam Results</h3>
-                          </div>
-                          <div class='dropdown'>
-                            <a
-                              class='dropdown-toggle'
-                              href='#'
-                              role='button'
-                              data-toggle='dropdown'
-                              aria-expanded='false'
-                            >
-                              ...
-                            </a>
-
-                            <div class='dropdown-menu dropdown-menu-right'>
-                              <a class='dropdown-item' href='#'>
-                                <i class='fas fa-times text-orange-red'></i>
-                                Close
-                              </a>
-                              <a class='dropdown-item' href='#'>
-                                <i class='fas fa-cogs text-dark-pastel-green'></i>
-                                Edit
-                              </a>
-                              <a class='dropdown-item' href='#'>
-                                <i class='fas fa-redo-alt text-orange-peel'></i>
-                                Refresh
-                              </a>
+                        <div class="card height-auto">
+                    <div class="card-body">
+                        <div class="heading-layout1">
+                            <div class="item-title">
+                                <h3>Make placement</h3>
                             </div>
-                          </div>
+                            <div class="dropdown">
+                                <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                                    aria-expanded="false">...</a>
+
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="#"><i
+                                            class="fas fa-times text-orange-red"></i>Close</a>
+                                    <a class="dropdown-item" href="#"><i
+                                            class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                                    <a class="dropdown-item" href="#"><i
+                                            class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class='table-box-wrap'>
+                        <form class="new-added-form">
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label>First Name *</label>
+                                    <input type="text" placeholder="" class="form-control"/>
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label>Last Name *</label>
+                                    <input type="text" placeholder="" class="form-control"/>
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                <label>Department *</label>
+                                    <input type="text" placeholder="" class="form-control"/>
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                <label>Level *</label>
+                                    <input type="text" placeholder="" class="form-control"/>
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label>Program</label>
+                                    <input type="text" placeholder="" class="form-control"/>
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                <label>Company Name *</label>
+                                    <input type="text" placeholder="" class="form-control"/>
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                <label>Company Address *</label>
+                                    <input type="text" placeholder="" class="form-control"/>
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label>Company Email</label>
+                                    <input type="email" placeholder="" class="form-control"/>
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                <label>Section Of Work *</label>
+                                    <input type="text" placeholder="" class="form-control"/>
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                <label>Matric Number *</label>
+                                    <input type="number" placeholder="" class="form-control"/>
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label>Registration Number</label>
+                                    <input type="number" placeholder="" class="form-control"/>
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                <label class="text-dark-medium">Offer Letter</label>
+                                    <input type="file" class="form-control-file"/>
+                                </div>
+                                <div class="col-12 form-group mg-t-8">
+                                    <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>
+                                    <button type="reset" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Reset</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                        {/* <div class='table-box-wrap'>
                           <form class='search-form-box'>
                             <div class='row gutters-8'>
                               <div class='col-lg-4 col-12 form-group'>
@@ -682,7 +699,7 @@ export default function Student() {
                               </tbody>
                             </table>
                           </div>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>
