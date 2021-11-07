@@ -1,29 +1,30 @@
-import React from 'react';
-import Nav from './Nav';
-import Sidebar from './Sidebar';
+import React from 'react'
+import Nav from '../Components/Nav';
+import AdminSidebar from './AdminSidebar';
 
-export default function MakePlacement() {
-  return (
-    <>
-      <div id='wrapper' class='wrapper bg-ash'>
+
+export default function AddLecturer() {
+    return (
+        <>
+              <div id='wrapper' class='wrapper bg-ash'>
         <Nav />
         <div class='dashboard-page-one'>
-          <Sidebar />
+          <AdminSidebar />
           <div class='dashboard-content-one'>
             <div class='breadcrumbs-area'>
-              <h3>Students</h3>
+              <h3>Admin</h3>
               <ul>
                 <li>
                   <a href='index.html'>Home</a>
                 </li>
-                <li>Student Placement Form</li>
+                <li>Create Lecturer</li>
               </ul>
             </div>
             <div class='card height-auto'>
               <div class='card-body'>
                 <div class='heading-layout1'>
                   <div class='item-title'>
-                    <h3>Make placement</h3>
+                    <h3>Add Lecturer</h3>
                   </div>
                   <div class='dropdown'>
                     <a
@@ -68,43 +69,15 @@ export default function MakePlacement() {
                       <input type='text' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
-                      <label>Program</label>
-                      <input type='text' placeholder='' class='form-control' />
+                      <label>Phone Number *</label>
+                      <input type='number' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
-                      <label>Company Name *</label>
-                      <input type='text' placeholder='' class='form-control' />
-                    </div>
-                    <div class='col-xl-3 col-lg-6 col-12 form-group'>
-                      <label>Company Address *</label>
-                      <input type='text' placeholder='' class='form-control' />
-                    </div>
-                    <div class='col-xl-3 col-lg-6 col-12 form-group'>
-                      <label>Company Email</label>
+                      <label>Email</label>
                       <input type='email' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
-                      <label>Sector Of Work *</label>
-                      <input type='text' placeholder='' class='form-control' />
-                    </div>
-                    <div class='col-xl-3 col-lg-6 col-12 form-group'>
-                      <label>Matric Number *</label>
-                      <input
-                        type='number'
-                        placeholder=''
-                        class='form-control'
-                      />
-                    </div>
-                    <div class='col-xl-3 col-lg-6 col-12 form-group'>
-                      <label>Registration Number</label>
-                      <input
-                        type='number'
-                        placeholder=''
-                        class='form-control'
-                      />
-                    </div>
-                    <div class='col-xl-3 col-lg-6 col-12 form-group'>
-                      <label class='text-dark-medium'>Offer Letter</label>
+                      <label class='text-dark-medium'>Lecturer Picture</label>
                       <input type='file' class='form-control-file' />
                     </div>
                     <div class='col-12 form-group mg-t-8'>
@@ -134,6 +107,6 @@ export default function MakePlacement() {
           </div>
         </div>
       </div>
-    </>
-  );
+        </>
+    )
 }
