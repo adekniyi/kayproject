@@ -1,8 +1,14 @@
-import React from 'react';
+import React,{ useState, useEffect} from 'react';
 import Nav from '../Components/Nav';
 import LecturerSidebar from './LecturerSidebar';
+import { getAllStudents } from '../APIs/apiCalls';
 
 export default function LecturerStudents() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    getAllStudents(setData);
+  }, []);
   return (
     <>
       <div id='wrapper' class='wrapper bg-ash'>
@@ -91,346 +97,88 @@ export default function LecturerStudents() {
                         </div>
                       </form>
                       <div class='table-responsive student-table-box'>
-                        <table class='table display data-table text-nowrap'>
-                          <thead>
-                            <tr>
-                              <th>
-                                <div class='form-check'>
-                                  <input
-                                    type='checkbox'
-                                    class='form-check-input checkAll'
-                                  />
-                                  <label class='form-check-label'>Roll</label>
-                                </div>
-                              </th>
-                              <th>Photo</th>
-                              <th>Name</th>
-                              <th>Gender</th>
-                              <th>Class</th>
-                              <th>Section</th>
-                              <th>Parents</th>
-                              <th>Address</th>
-                              <th>Date Of Birth</th>
-                              <th>Phone</th>
-                              <th>E-mail</th>
-                              <th></th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <div class='form-check'>
-                                  <input
-                                    type='checkbox'
-                                    class='form-check-input'
-                                  />
-                                  <label class='form-check-label'>#0021</label>
-                                </div>
-                              </td>
-                              <td class='text-center'>
-                                <img
-                                  src='/img/figure/student2.png'
-                                  alt='student'
-                                />
-                              </td>
-                              <td>Mark Willy</td>
-                              <td>Male</td>
-                              <td>2</td>
-                              <td>A</td>
-                              <td>Jack Sparrow </td>
-                              <td>TA-107 Newyork</td>
-                              <td>02/05/2001</td>
-                              <td>+ 123 9988568</td>
-                              <td>kazifahim93@gmail.com</td>
-                              <td>
-                                <div class='dropdown'>
-                                  <a
-                                    href='#'
-                                    class='dropdown-toggle'
-                                    data-toggle='dropdown'
-                                    aria-expanded='false'
-                                  >
-                                    <span class='flaticon-more-button-of-three-dots'></span>
-                                  </a>
-                                  <div class='dropdown-menu dropdown-menu-right'>
-                                    <a class='dropdown-item' href='#'>
-                                      <i class='fas fa-times text-orange-red'></i>
-                                      Close
-                                    </a>
-                                    <a class='dropdown-item' href='#'>
-                                      <i class='fas fa-cogs text-dark-pastel-green'></i>
-                                      Edit
-                                    </a>
-                                    <a class='dropdown-item' href='#'>
-                                      <i class='fas fa-redo-alt text-orange-peel'></i>
-                                      Refresh
-                                    </a>
+                      <table class='table display data-table text-nowrap'>
+                            <thead>
+                              <tr>
+                                <th>
+                                  <div class='form-check'>
+                                    <input
+                                      type='checkbox'
+                                      class='form-check-input checkAll'
+                                    />
+                                    <label class='form-check-label'>Roll</label>
                                   </div>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <div class='form-check'>
-                                  <input
-                                    type='checkbox'
-                                    class='form-check-input'
-                                  />
-                                  <label class='form-check-label'>#0022</label>
-                                </div>
-                              </td>
-                              <td class='text-center'>
-                                <img
-                                  src='/img/figure/student3.png'
-                                  alt='student'
-                                />
-                              </td>
-                              <td>Jessia Rose</td>
-                              <td>Female</td>
-                              <td>1</td>
-                              <td>A</td>
-                              <td>Maria Jamans</td>
-                              <td>59 Australia, Sydney</td>
-                              <td>02/05/2001</td>
-                              <td>+ 123 9988568</td>
-                              <td>kazifahim93@gmail.com</td>
-                              <td>
-                                <div class='dropdown'>
-                                  <a
-                                    href='#'
-                                    class='dropdown-toggle'
-                                    data-toggle='dropdown'
-                                    aria-expanded='false'
-                                  >
-                                    <span class='flaticon-more-button-of-three-dots'></span>
-                                  </a>
-                                  <div class='dropdown-menu dropdown-menu-right'>
-                                    <a class='dropdown-item' href='#'>
-                                      <i class='fas fa-times text-orange-red'></i>
-                                      Close
-                                    </a>
-                                    <a class='dropdown-item' href='#'>
-                                      <i class='fas fa-cogs text-dark-pastel-green'></i>
-                                      Edit
-                                    </a>
-                                    <a class='dropdown-item' href='#'>
-                                      <i class='fas fa-redo-alt text-orange-peel'></i>
-                                      Refresh
-                                    </a>
-                                  </div>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <div class='form-check'>
-                                  <input
-                                    type='checkbox'
-                                    class='form-check-input'
-                                  />
-                                  <label class='form-check-label'>#0023</label>
-                                </div>
-                              </td>
-                              <td class='text-center'>
-                                <img
-                                  src='/img/figure/student4.png'
-                                  alt='student'
-                                />
-                              </td>
-                              <td>Mark Willy</td>
-                              <td>Male</td>
-                              <td>2</td>
-                              <td>A</td>
-                              <td>Jack Sparrow </td>
-                              <td>TA-107 Newyork</td>
-                              <td>02/05/2001</td>
-                              <td>+ 123 9988568</td>
-                              <td>kazifahim93@gmail.com</td>
-                              <td>
-                                <div class='dropdown'>
-                                  <a
-                                    href='#'
-                                    class='dropdown-toggle'
-                                    data-toggle='dropdown'
-                                    aria-expanded='false'
-                                  >
-                                    <span class='flaticon-more-button-of-three-dots'></span>
-                                  </a>
-                                  <div class='dropdown-menu dropdown-menu-right'>
-                                    <a class='dropdown-item' href='#'>
-                                      <i class='fas fa-times text-orange-red'></i>
-                                      Close
-                                    </a>
-                                    <a class='dropdown-item' href='#'>
-                                      <i class='fas fa-cogs text-dark-pastel-green'></i>
-                                      Edit
-                                    </a>
-                                    <a class='dropdown-item' href='#'>
-                                      <i class='fas fa-redo-alt text-orange-peel'></i>
-                                      Refresh
-                                    </a>
-                                  </div>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <div class='form-check'>
-                                  <input
-                                    type='checkbox'
-                                    class='form-check-input'
-                                  />
-                                  <label class='form-check-label'>#0024</label>
-                                </div>
-                              </td>
-                              <td class='text-center'>
-                                <img
-                                  src='/img/figure/student5.png'
-                                  alt='student'
-                                />
-                              </td>
-                              <td>Jessia Rose</td>
-                              <td>Female</td>
-                              <td>1</td>
-                              <td>A</td>
-                              <td>Maria Jamans</td>
-                              <td>59 Australia, Sydney</td>
-                              <td>02/05/2001</td>
-                              <td>+ 123 9988568</td>
-                              <td>kazifahim93@gmail.com</td>
-                              <td>
-                                <div class='dropdown'>
-                                  <a
-                                    href='#'
-                                    class='dropdown-toggle'
-                                    data-toggle='dropdown'
-                                    aria-expanded='false'
-                                  >
-                                    <span class='flaticon-more-button-of-three-dots'></span>
-                                  </a>
-                                  <div class='dropdown-menu dropdown-menu-right'>
-                                    <a class='dropdown-item' href='#'>
-                                      <i class='fas fa-times text-orange-red'></i>
-                                      Close
-                                    </a>
-                                    <a class='dropdown-item' href='#'>
-                                      <i class='fas fa-cogs text-dark-pastel-green'></i>
-                                      Edit
-                                    </a>
-                                    <a class='dropdown-item' href='#'>
-                                      <i class='fas fa-redo-alt text-orange-peel'></i>
-                                      Refresh
-                                    </a>
-                                  </div>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <div class='form-check'>
-                                  <input
-                                    type='checkbox'
-                                    class='form-check-input'
-                                  />
-                                  <label class='form-check-label'>#0025</label>
-                                </div>
-                              </td>
-                              <td class='text-center'>
-                                <img
-                                  src='/img/figure/student6.png'
-                                  alt='student'
-                                />
-                              </td>
-                              <td>Mark Willy</td>
-                              <td>Male</td>
-                              <td>2</td>
-                              <td>A</td>
-                              <td>Jack Sparrow </td>
-                              <td>TA-107 Newyork</td>
-                              <td>02/05/2001</td>
-                              <td>+ 123 9988568</td>
-                              <td>kazifahim93@gmail.com</td>
-                              <td>
-                                <div class='dropdown'>
-                                  <a
-                                    href='#'
-                                    class='dropdown-toggle'
-                                    data-toggle='dropdown'
-                                    aria-expanded='false'
-                                  >
-                                    <span class='flaticon-more-button-of-three-dots'></span>
-                                  </a>
-                                  <div class='dropdown-menu dropdown-menu-right'>
-                                    <a class='dropdown-item' href='#'>
-                                      <i class='fas fa-times text-orange-red'></i>
-                                      Close
-                                    </a>
-                                    <a class='dropdown-item' href='#'>
-                                      <i class='fas fa-cogs text-dark-pastel-green'></i>
-                                      Edit
-                                    </a>
-                                    <a class='dropdown-item' href='#'>
-                                      <i class='fas fa-redo-alt text-orange-peel'></i>
-                                      Refresh
-                                    </a>
-                                  </div>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <div class='form-check'>
-                                  <input
-                                    type='checkbox'
-                                    class='form-check-input'
-                                  />
-                                  <label class='form-check-label'>#0026</label>
-                                </div>
-                              </td>
-                              <td class='text-center'>
-                                <img
-                                  src='/img/figure/student7.png'
-                                  alt='student'
-                                />
-                              </td>
-                              <td>Jessia Rose</td>
-                              <td>Female</td>
-                              <td>1</td>
-                              <td>A</td>
-                              <td>Maria Jamans</td>
-                              <td>59 Australia, Sydney</td>
-                              <td>02/05/2001</td>
-                              <td>+ 123 9988568</td>
-                              <td>kazifahim93@gmail.com</td>
-                              <td>
-                                <div class='dropdown'>
-                                  <a
-                                    href='#'
-                                    class='dropdown-toggle'
-                                    data-toggle='dropdown'
-                                    aria-expanded='false'
-                                  >
-                                    <span class='flaticon-more-button-of-three-dots'></span>
-                                  </a>
-                                  <div class='dropdown-menu dropdown-menu-right'>
-                                    <a class='dropdown-item' href='#'>
-                                      <i class='fas fa-times text-orange-red'></i>
-                                      Close
-                                    </a>
-                                    <a class='dropdown-item' href='#'>
-                                      <i class='fas fa-cogs text-dark-pastel-green'></i>
-                                      Edit
-                                    </a>
-                                    <a class='dropdown-item' href='#'>
-                                      <i class='fas fa-redo-alt text-orange-peel'></i>
-                                      Refresh
-                                    </a>
-                                  </div>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                                </th>
+                                <th>Photo</th>
+                                <th>Name</th>
+                                <th>Gender</th>
+                                <th>Level</th>
+                                <th>Address</th>
+                                <th>Date Of Birth</th>
+                                <th>Phone</th>
+                                <th>E-mail</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {data.map((student) => (
+                                <tr key={student.studentId}>
+                                  <td>
+                                    <div class='form-check'>
+                                      <input
+                                        type='checkbox'
+                                        class='form-check-input'
+                                      />
+                                      <label class='form-check-label'>
+                                        {student.studentId}
+                                      </label>
+                                    </div>
+                                  </td>
+                                  <td class='text-center'>
+                                    <img
+                                      src='/img/figure/student2.png'
+                                      alt='student'
+                                    />
+                                  </td>
+                                  <td>
+                                    {student.firstName} {student.lastName}
+                                  </td>
+                                  <td>{student.gender}</td>
+                                  <td>{student.level}</td>
+                                  <td>{student.address}</td>
+                                  <td>{student.dob}</td>
+                                  <td>{student.phoneNumber}</td>
+                                  <td>{student.emailAddress}</td>
+                                  <td>
+                                    <div class='dropdown'>
+                                      <a
+                                        href='#'
+                                        class='dropdown-toggle'
+                                        data-toggle='dropdown'
+                                        aria-expanded='false'
+                                      >
+                                        <span class='flaticon-more-button-of-three-dots'></span>
+                                      </a>
+                                      <div class='dropdown-menu dropdown-menu-right'>
+                                        <a class='dropdown-item' href='#'>
+                                          <i class='fas fa-times text-orange-red'></i>
+                                          Close
+                                        </a>
+                                        <a class='dropdown-item' href='#'>
+                                          <i class='fas fa-cogs text-dark-pastel-green'></i>
+                                          Edit
+                                        </a>
+                                        <a class='dropdown-item' href='#'>
+                                          <i class='fas fa-redo-alt text-orange-peel'></i>
+                                          Refresh
+                                        </a>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
                       </div>
                     </div>
                   </div>
