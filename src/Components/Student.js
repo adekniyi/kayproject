@@ -1,9 +1,21 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import Nav from './Nav';
 import Sidebar from './Sidebar';
 import logo1 from "../public/img/figure/student.png";
 
 export default function Student() {
+  const [profile, setProfile] = useState({});
+
+  useEffect(() => {
+    //   this might never throw an error, since we did checks on path"
+    const profileDetails = JSON.parse(localStorage.getItem("userDetails"));
+    if (profileDetails) {
+      setProfile(profileDetails);
+      console.log(profileDetails)
+    } else {
+      // logout user
+    }
+  }, []);
   return (
     <>
       {/* <div id='preloader'></div> */}
@@ -59,13 +71,13 @@ export default function Student() {
                       <div class='media media-none--xs'>
                         <div class='item-img'>
                           <img
-                            src={logo1}
+                            src={profile?.userProfileInformation?.pictureUrl}
                             class='media-img-auto'
                             alt='student'
                           />
                         </div>
                         <div class='media-body'>
-                          <h3 class='item-title'>Stevne Zone</h3>
+                          <h3 class='item-title'>{profile?.userProfileInformation?.firstName} {profile?.userProfileInformation?.lastName}</h3>
                           <p>
                             Aliquam erat volutpat. Curabiene natis massa sedde
                             lacustiquen sodale word moun taiery.
@@ -78,45 +90,45 @@ export default function Student() {
                             <tr>
                               <td>Name:</td>
                               <td class='font-medium text-dark-medium'>
-                                Stevne Zone
+                              {profile?.userProfileInformation?.firstName} {profile?.userProfileInformation?.lastName}
                               </td>
                             </tr>
                             <tr>
                               <td>Gender:</td>
-                              <td class='font-medium text-dark-medium'>Male</td>
+                              <td class='font-medium text-dark-medium'>{profile?.userProfileInformation?.gender}</td>
                             </tr>
                             <tr>
                               <td>Level:</td>
-                              <td class='font-medium text-dark-medium'>100</td>
+                              <td class='font-medium text-dark-medium'>{profile?.userProfileInformation?.level}</td>
                             </tr>
                             <tr>
                               <td>Matric Number:</td>
                               <td class='font-medium text-dark-medium'>
-                                199110
+                              {profile?.userProfileInformation?.matricNumber}
                               </td>
                             </tr>
                             <tr>
                               <td>Date Of Birth:</td>
                               <td class='font-medium text-dark-medium'>
-                                07.08.2006
+                              {profile?.userProfileInformation?.dob}
                               </td>
                             </tr>
                             <tr>
-                              <td>Father Occupation:</td>
+                              <td>Address:</td>
                               <td class='font-medium text-dark-medium'>
-                                Graphic Designer
+                              {profile?.userProfileInformation?.address}
                               </td>
                             </tr>
                             <tr>
                               <td>E-Mail:</td>
                               <td class='font-medium text-dark-medium'>
-                                jessiarose@gmail.com
+                              {profile?.userProfileInformation?.emailAddress}
                               </td>
                             </tr>
                             <tr>
                               <td>Phone:</td>
                               <td class='font-medium text-dark-medium'>
-                                + 88 9856418
+                              {profile?.userProfileInformation?.phoneNumber}
                               </td>
                             </tr>
                           </tbody>

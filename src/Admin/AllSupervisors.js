@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import Nav from '../Components/Nav';
 import AdminSidebar from './AdminSidebar';
+import { getAllSupervisors } from '../APIs/apiCalls';
 
 export default function AllSupervisors() {
-    return (
-        <>
-               <div id='wrapper' class='wrapper bg-ash'>
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    getAllSupervisors(setData);
+  }, []);
+
+  return (
+    <>
+      <div id='wrapper' class='wrapper bg-ash'>
         <Nav />
         <div class='dashboard-page-one'>
           <AdminSidebar />
@@ -104,7 +111,6 @@ export default function AllSupervisors() {
                                 </th>
                                 <th>Photo</th>
                                 <th>Name</th>
-                                <th>Gender</th>
                                 <th>NOS</th>
                                 <th>Address</th>
                                 <th>Industry</th>
@@ -114,318 +120,61 @@ export default function AllSupervisors() {
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <td>
-                                  <div class='form-check'>
-                                    <input
-                                      type='checkbox'
-                                      class='form-check-input'
-                                    />
-                                    <label class='form-check-label'>
-                                      #0021
-                                    </label>
-                                  </div>
-                                </td>
-                                <td class='text-center'>
-                                  <img
-                                    src='/img/figure/student2.png'
-                                    alt='student'
-                                  />
-                                </td>
-                                <td>Mark Willy</td>
-                                <td>Male</td>
-                                <td>2</td>
-                                <td>TA-107 Newyork</td>
-                                <td>Tech</td>
-                                <td>+ 123 9988568</td>
-                                <td>kazifahim93@gmail.com</td>
-                                <td>
-                                  <div class='dropdown'>
-                                    <a
-                                      href='#'
-                                      class='dropdown-toggle'
-                                      data-toggle='dropdown'
-                                      aria-expanded='false'
-                                    >
-                                      <span class='flaticon-more-button-of-three-dots'></span>
-                                    </a>
-                                    <div class='dropdown-menu dropdown-menu-right'>
-                                      <a class='dropdown-item' href='#'>
-                                        <i class='fas fa-times text-orange-red'></i>
-                                        Close
-                                      </a>
-                                      <a class='dropdown-item' href='#'>
-                                        <i class='fas fa-cogs text-dark-pastel-green'></i>
-                                        Edit
-                                      </a>
-                                      <a class='dropdown-item' href='#'>
-                                        <i class='fas fa-redo-alt text-orange-peel'></i>
-                                        Refresh
-                                      </a>
+                              {data?.map((supervisor) => (
+                                <tr key={supervisor.industrialSupervisorId}>
+                                  <td>
+                                    <div class='form-check'>
+                                      <input
+                                        type='checkbox'
+                                        class='form-check-input'
+                                      />
+                                      <label class='form-check-label'>
+                                        {supervisor.industrialSupervisorId}
+                                      </label>
                                     </div>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <div class='form-check'>
-                                    <input
-                                      type='checkbox'
-                                      class='form-check-input'
+                                  </td>
+                                  <td class='text-center'>
+                                    <img
+                                      src='/img/figure/student2.png'
+                                      alt='student'
                                     />
-                                    <label class='form-check-label'>
-                                      #0022
-                                    </label>
-                                  </div>
-                                </td>
-                                <td class='text-center'>
-                                  <img
-                                    src='/img/figure/student3.png'
-                                    alt='student'
-                                  />
-                                </td>
-                                <td>Jessia Rose</td>
-                                <td>Female</td>
-                                <td>1</td>
-                                <td>59 Australia, Sydney</td>
-                                <td>Health</td>
-                                <td>+ 123 9988568</td>
-                                <td>kazifahim93@gmail.com</td>
-                                <td>
-                                  <div class='dropdown'>
-                                    <a
-                                      href='#'
-                                      class='dropdown-toggle'
-                                      data-toggle='dropdown'
-                                      aria-expanded='false'
-                                    >
-                                      <span class='flaticon-more-button-of-three-dots'></span>
-                                    </a>
-                                    <div class='dropdown-menu dropdown-menu-right'>
-                                      <a class='dropdown-item' href='#'>
-                                        <i class='fas fa-times text-orange-red'></i>
-                                        Close
+                                  </td>
+                                  <td>
+                                    {supervisor.firstName} {supervisor.lastName}
+                                  </td>
+                                  <td>2</td>
+                                  <td>{supervisor.companyAddress}</td>
+                                  <td>{supervisor.sectionOfWork}</td>
+                                  <td>{supervisor.phoneNumber}</td>
+                                  <td>{supervisor.emailAddress}</td>
+                                  <td>
+                                    <div class='dropdown'>
+                                      <a
+                                        href='#'
+                                        class='dropdown-toggle'
+                                        data-toggle='dropdown'
+                                        aria-expanded='false'
+                                      >
+                                        <span class='flaticon-more-button-of-three-dots'></span>
                                       </a>
-                                      <a class='dropdown-item' href='#'>
-                                        <i class='fas fa-cogs text-dark-pastel-green'></i>
-                                        Edit
-                                      </a>
-                                      <a class='dropdown-item' href='#'>
-                                        <i class='fas fa-redo-alt text-orange-peel'></i>
-                                        Refresh
-                                      </a>
+                                      <div class='dropdown-menu dropdown-menu-right'>
+                                        <a class='dropdown-item' href='#'>
+                                          <i class='fas fa-times text-orange-red'></i>
+                                          Close
+                                        </a>
+                                        <a class='dropdown-item' href='#'>
+                                          <i class='fas fa-cogs text-dark-pastel-green'></i>
+                                          Edit
+                                        </a>
+                                        <a class='dropdown-item' href='#'>
+                                          <i class='fas fa-redo-alt text-orange-peel'></i>
+                                          Refresh
+                                        </a>
+                                      </div>
                                     </div>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <div class='form-check'>
-                                    <input
-                                      type='checkbox'
-                                      class='form-check-input'
-                                    />
-                                    <label class='form-check-label'>
-                                      #0023
-                                    </label>
-                                  </div>
-                                </td>
-                                <td class='text-center'>
-                                  <img
-                                    src='/img/figure/student4.png'
-                                    alt='student'
-                                  />
-                                </td>
-                                <td>Mark Willy</td>
-                                <td>Male</td>
-                                <td>2</td>
-                                <td>TA-107 Newyork</td>
-                                <td>Accounting</td>
-                                <td>+ 123 9988568</td>
-                                <td>kazifahim93@gmail.com</td>
-                                <td>
-                                  <div class='dropdown'>
-                                    <a
-                                      href='#'
-                                      class='dropdown-toggle'
-                                      data-toggle='dropdown'
-                                      aria-expanded='false'
-                                    >
-                                      <span class='flaticon-more-button-of-three-dots'></span>
-                                    </a>
-                                    <div class='dropdown-menu dropdown-menu-right'>
-                                      <a class='dropdown-item' href='#'>
-                                        <i class='fas fa-times text-orange-red'></i>
-                                        Close
-                                      </a>
-                                      <a class='dropdown-item' href='#'>
-                                        <i class='fas fa-cogs text-dark-pastel-green'></i>
-                                        Edit
-                                      </a>
-                                      <a class='dropdown-item' href='#'>
-                                        <i class='fas fa-redo-alt text-orange-peel'></i>
-                                        Refresh
-                                      </a>
-                                    </div>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <div class='form-check'>
-                                    <input
-                                      type='checkbox'
-                                      class='form-check-input'
-                                    />
-                                    <label class='form-check-label'>
-                                      #0024
-                                    </label>
-                                  </div>
-                                </td>
-                                <td class='text-center'>
-                                  <img
-                                    src='/img/figure/student5.png'
-                                    alt='student'
-                                  />
-                                </td>
-                                <td>Jessia Rose</td>
-                                <td>Female</td>
-                                <td>1</td>
-                                <td>59 Australia, Sydney</td>
-                                <td>FinTech</td>
-                                <td>+ 123 9988568</td>
-                                <td>kazifahim93@gmail.com</td>
-                                <td>
-                                  <div class='dropdown'>
-                                    <a
-                                      href='#'
-                                      class='dropdown-toggle'
-                                      data-toggle='dropdown'
-                                      aria-expanded='false'
-                                    >
-                                      <span class='flaticon-more-button-of-three-dots'></span>
-                                    </a>
-                                    <div class='dropdown-menu dropdown-menu-right'>
-                                      <a class='dropdown-item' href='#'>
-                                        <i class='fas fa-times text-orange-red'></i>
-                                        Close
-                                      </a>
-                                      <a class='dropdown-item' href='#'>
-                                        <i class='fas fa-cogs text-dark-pastel-green'></i>
-                                        Edit
-                                      </a>
-                                      <a class='dropdown-item' href='#'>
-                                        <i class='fas fa-redo-alt text-orange-peel'></i>
-                                        Refresh
-                                      </a>
-                                    </div>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <div class='form-check'>
-                                    <input
-                                      type='checkbox'
-                                      class='form-check-input'
-                                    />
-                                    <label class='form-check-label'>
-                                      #0025
-                                    </label>
-                                  </div>
-                                </td>
-                                <td class='text-center'>
-                                  <img
-                                    src='/img/figure/student6.png'
-                                    alt='student'
-                                  />
-                                </td>
-                                <td>Mark Willy</td>
-                                <td>Male</td>
-                                <td>2</td>
-                                <td>TA-107 Newyork</td>
-                                <td>Agriculture</td>
-                                <td>+ 123 9988568</td>
-                                <td>kazifahim93@gmail.com</td>
-                                <td>
-                                  <div class='dropdown'>
-                                    <a
-                                      href='#'
-                                      class='dropdown-toggle'
-                                      data-toggle='dropdown'
-                                      aria-expanded='false'
-                                    >
-                                      <span class='flaticon-more-button-of-three-dots'></span>
-                                    </a>
-                                    <div class='dropdown-menu dropdown-menu-right'>
-                                      <a class='dropdown-item' href='#'>
-                                        <i class='fas fa-times text-orange-red'></i>
-                                        Close
-                                      </a>
-                                      <a class='dropdown-item' href='#'>
-                                        <i class='fas fa-cogs text-dark-pastel-green'></i>
-                                        Edit
-                                      </a>
-                                      <a class='dropdown-item' href='#'>
-                                        <i class='fas fa-redo-alt text-orange-peel'></i>
-                                        Refresh
-                                      </a>
-                                    </div>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <div class='form-check'>
-                                    <input
-                                      type='checkbox'
-                                      class='form-check-input'
-                                    />
-                                    <label class='form-check-label'>
-                                      #0026
-                                    </label>
-                                  </div>
-                                </td>
-                                <td class='text-center'>
-                                  <img
-                                    src='/img/figure/student7.png'
-                                    alt='student'
-                                  />
-                                </td>
-                                <td>Jessia Rose</td>
-                                <td>Female</td>
-                                <td>1</td>
-                                <td>59 Australia, Sydney</td>
-                                <td>Teaching</td>
-                                <td>+ 123 9988568</td>
-                                <td>kazifahim93@gmail.com</td>
-                                <td>
-                                  <div class='dropdown'>
-                                    <a
-                                      href='#'
-                                      class='dropdown-toggle'
-                                      data-toggle='dropdown'
-                                      aria-expanded='false'
-                                    >
-                                      <span class='flaticon-more-button-of-three-dots'></span>
-                                    </a>
-                                    <div class='dropdown-menu dropdown-menu-right'>
-                                      <a class='dropdown-item' href='#'>
-                                        <i class='fas fa-times text-orange-red'></i>
-                                        Close
-                                      </a>
-                                      <a class='dropdown-item' href='#'>
-                                        <i class='fas fa-cogs text-dark-pastel-green'></i>
-                                        Edit
-                                      </a>
-                                      <a class='dropdown-item' href='#'>
-                                        <i class='fas fa-redo-alt text-orange-peel'></i>
-                                        Refresh
-                                      </a>
-                                    </div>
-                                  </div>
-                                </td>
-                              </tr>
+                                  </td>
+                                </tr>
+                              ))}
                             </tbody>
                           </table>
                         </div>
@@ -438,6 +187,6 @@ export default function AllSupervisors() {
           </div>
         </div>
       </div>
-        </>
-    )
+    </>
+  );
 }
