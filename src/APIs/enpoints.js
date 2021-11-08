@@ -5,5 +5,5 @@ export const endpoints = {
   getStudents: `${base_url}Student`,
   getLecturers: `${base_url}Lecturer`,
   getSupervisors: `${base_url}IndustrialSupervisor`,
-  placevotes: `${base_url}vote`,
+  addLogbook: `${base_url}LogBook`,
 };

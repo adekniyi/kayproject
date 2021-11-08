@@ -71,6 +71,23 @@ export const getAllSupervisors = (setData) => {
     });
 };
 
+export const addLogboook = (payload) => {
+  
+  axios
+    .post(`${endpoints.addLogbook}`, payload)
+    .then(({ data: { objectValue } }) => {
+      console.log(objectValue);
+      localStorage.setItem(
+        "logbook",
+        JSON.stringify({ objectValue })
+      );
+    })
+    .catch((err) => {
+      console.log(err.response);
+      handleErrors(err);
+    });
+};
+
 export const getAllCandidatesById = (id, setCandidates, loading) => {
   console.log("making request...");
   axios
