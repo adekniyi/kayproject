@@ -1,8 +1,16 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Nav from '../Components/Nav';
 import AdminSidebar from './AdminSidebar';
 
 export default function AddStudent() {
+  const [formData, setFormData] = useState({ firstName: "", lastName: "",emailAddress:"",phoneNumber: "",gender: "",dob:"",state:"",lga:"",address:"", department:"",level:"",matricNumber:""});
+
+  const addStudent = (e) => {
+    e.preventDefault();
+    //  login(formData, history);
+     console.log(formData);
+  };
+
   return (
     <>
       <div id='wrapper' class='wrapper bg-ash'>
@@ -49,47 +57,74 @@ export default function AddStudent() {
                     </div>
                   </div>
                 </div>
-                <form class='new-added-form'>
+                <form onSubmit={(e) => addStudent(e)} class='new-added-form'>
                   <div class='row'>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>First Name *</label>
-                      <input type='text' placeholder='' class='form-control' />
+                      <input  value={formData.firstName}
+              onChange={(e) =>
+                setFormData({ ...formData, firstName: e.target.value })
+              } type='text' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>Last Name *</label>
-                      <input type='text' placeholder='' class='form-control' />
+                      <input  value={formData.lastName}
+              onChange={(e) =>
+                setFormData({ ...formData, lastName: e.target.value })
+              } type='text' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>Department *</label>
-                      <input type='text' placeholder='' class='form-control' />
+                      <input  value={formData.department}
+              onChange={(e) =>
+                setFormData({ ...formData, department: e.target.value })
+              } type='text' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>Level *</label>
-                      <input type='text' placeholder='' class='form-control' />
+                      <input  value={formData.level}
+              onChange={(e) =>
+                setFormData({ ...formData, level: e.target.value })
+              } type='text' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>LGA</label>
-                      <input type='text' placeholder='' class='form-control' />
+                      <input  value={formData.lga}
+              onChange={(e) =>
+                setFormData({ ...formData, lga: e.target.value })
+              } type='text' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>State *</label>
-                      <input type='text' placeholder='' class='form-control' />
+                      <input  value={formData.state}
+              onChange={(e) =>
+                setFormData({ ...formData, state: e.target.value })
+              } type='text' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>Address *</label>
-                      <input type='text' placeholder='' class='form-control' />
+                      <input  value={formData.address}
+              onChange={(e) =>
+                setFormData({ ...formData, address: e.target.value })
+              } type='text' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>Email</label>
-                      <input type='email' placeholder='' class='form-control' />
+                      <input  value={formData.emailAddress}
+              onChange={(e) =>
+                setFormData({ ...formData, emailAddress: e.target.value })
+              } type='email' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>Gender *</label>
-                      <select class='select2'>
+                      <select  value={formData.gender}
+              onChange={(e) =>
+                setFormData({ ...formData, gender: e.target.value })
+              } class='select2'>
                         <option value=''>Please Select Gender *</option>
-                        <option value='1'>Male</option>
-                        <option value='2'>Female</option>
-                        <option value='3'>Others</option>
+                        <option value='Male'>Male</option>
+                        <option value='Female'>Female</option>
+                        <option value='Others'>Others</option>
                       </select>
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
@@ -98,6 +133,10 @@ export default function AddStudent() {
                         type='number'
                         placeholder=''
                         class='form-control'
+                        value={formData.matricNumber}
+                        onChange={(e) =>
+                          setFormData({ ...formData, matricNumber: e.target.value })
+                        }
                       />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
@@ -107,12 +146,28 @@ export default function AddStudent() {
                         placeholder='dd/mm/yyyy'
                         class='form-control air-datepicker'
                         data-position='bottom right'
+                        value={formData.dob}
+                        onChange={(e) =>
+                          setFormData({ ...formData, dob: e.target.value })
+                        }
                       />
                       <i class='far fa-calendar-alt'></i>
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label class='text-dark-medium'>Student Picture</label>
                       <input type='file' class='form-control-file' />
+                    </div>
+                    <div class='col-xl-3 col-lg-6 col-12 form-group'>
+                      <label>Phone Number *</label>
+                      <input
+                        type='text'
+                        placeholder=''
+                        class='form-control'
+                        value={formData.phoneNumber}
+                        onChange={(e) =>
+                          setFormData({ ...formData, phoneNumber: e.target.value })
+                        }
+                      />
                     </div>
                     <div class='col-12 form-group mg-t-8'>
                       <button

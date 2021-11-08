@@ -1,9 +1,16 @@
-import React from 'react'
+import React,{ useState} from 'react'
 import Nav from '../Components/Nav';
 import AdminSidebar from './AdminSidebar';
 
 
 export default function AddSupervisor() {
+  const [formData, setFormData] = useState({ firstName: "", lastName: "",emailAddress:"",phoneNumber: "",sectionOfWork: "",companyAddress:"", companyName:""});
+
+  const addSupervisor = (e) => {
+    e.preventDefault();
+    //  login(formData, history);
+     console.log(formData);
+  };
     return (
         <>
             <div id='wrapper' class='wrapper bg-ash'>
@@ -50,38 +57,60 @@ export default function AddSupervisor() {
                     </div>
                   </div>
                 </div>
-                <form class='new-added-form'>
+                <form onSubmit={(e) => addSupervisor(e)}  class='new-added-form'>
                   <div class='row'>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>First Name *</label>
-                      <input type='text' placeholder='' class='form-control' />
+                      <input value={formData.firstName}
+              onChange={(e) =>
+                setFormData({ ...formData, firstName: e.target.value })
+              } type='text' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>Last Name *</label>
-                      <input type='text' placeholder='' class='form-control' />
+                      <input value={formData.lastName}
+              onChange={(e) =>
+                setFormData({ ...formData, lastName: e.target.value })
+              } type='text' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>Sector Of Work *</label>
-                      <input type='text' placeholder='' class='form-control' />
+                      <input value={formData.sectionOfWork}
+              onChange={(e) =>
+                setFormData({ ...formData, sectionOfWork: e.target.value })
+              } type='text' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>Phone Number *</label>
-                      <input type='number' placeholder='' class='form-control' />
+                      <input value={formData.phoneNumber}
+              onChange={(e) =>
+                setFormData({ ...formData, phoneNumber: e.target.value })
+              } type='number' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
-                      <label>Company Address *</label>
-                      <input type='text' placeholder='' class='form-control' />
+                      <label>Company Name *</label>
+                      <input value={formData.companyName}
+              onChange={(e) =>
+                setFormData({ ...formData, companyName: e.target.value })
+              } type='text' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>Email</label>
-                      <input type='email' placeholder='' class='form-control' />
+                      <input value={formData.emailAddress}
+              onChange={(e) =>
+                setFormData({ ...formData, emailAddress: e.target.value })
+              } type='email' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>Company Address *</label>
                       <input
-                        type='number'
+                        type='text'
                         placeholder=''
                         class='form-control'
+                        value={formData.companyAddress}
+              onChange={(e) =>
+                setFormData({ ...formData, companyAddress: e.target.value })
+              }
                       />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
