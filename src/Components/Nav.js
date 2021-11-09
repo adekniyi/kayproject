@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../public/img/logo.png';
+import logo from '../public/img/kaylogo.jpeg';
 import logo1 from '../public/img/figure/admin.jpg';
 import logo2 from '../public/img/figure/student11.png';
 import logo3 from '../public/img/figure/student12.png';
@@ -12,8 +12,8 @@ export default function Nav() {
       <div class='navbar navbar-expand-md header-menu-one bg-light'>
         <div class='nav-bar-header-one'>
           <div class='header-logo'>
-            <a href='index.html'>
-              <img src={logo} alt='logo' />
+            <a className="nn-nav" href='index.html'>
+              <img src={logo} alt='logo' /> SOFT SIWES 
             </a>
           </div>
           <div class='toggle-button sidebar-toggle'>
