@@ -21,17 +21,17 @@ export default function LecturerSidebar() {
             <li class='nav-item sidebar-nav-item'>
               <a href='#' class='nav-link'>
                 <i class='flaticon-dashboard'></i>
-                <span>Lecturer Dashboard</span>
+                <span>institution supervisor Dashboard</span>
               </a>
               <ul class='nav sub-group-menu sub-group-active'>
                 <li class='nav-item'>
                   <a href='/lecturer' class='nav-link menu-active'>
-                    <i class='fas fa-angle-right'></i>Lecturer Profile
+                    <i class='fas fa-angle-right'></i>institution supervisor Profile
                   </a>
                 </li>
                 <li class='nav-item'>
                   <Link to='/lecturer/students' class='nav-link'>
-                    <i class='fas fa-angle-right'></i>All Lecturer Students
+                    <i class='fas fa-angle-right'></i>All institution supervisor Students
                   </Link>
                 </li>
                 <li class='nav-item'>

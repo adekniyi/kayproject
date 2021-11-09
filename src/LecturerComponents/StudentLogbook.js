@@ -18,12 +18,11 @@ export default function StudentLogbook() {
           <LecturerSidebar />
           <div class='dashboard-content-one'>
             <div class='breadcrumbs-area'>
-              <h3>Lecturer Dashboard</h3>
+              <h3>institution supervisor Dashboard</h3>
               <ul>
                 <li>
                   <a href='index.html'>Home</a>
                 </li>
-                <li>Lecturer</li>
                 <li>Students Logbooks</li>
               </ul>
             </div>
