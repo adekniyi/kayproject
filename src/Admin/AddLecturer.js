@@ -1,18 +1,38 @@
 import React,{ useState} from 'react'
 import Nav from '../Components/Nav';
 import AdminSidebar from './AdminSidebar';
+import axios from "axios";
+import Success from "../Components/Success"
+import { endpoints } from "../APIs/enpoints";
+import { handleErrors } from "../APIs/sharedUtils";
+
 
 
 export default function AddLecturer() {
-  const [formData, setFormData] = useState({ firstName: "", lastName: "",emailAddress:"",phoneNumber: "",address:"", department:""});
+  const [formData, setFormData] = useState({ firstName: "", lastName: "",emailAddress:"",phoneNumber: "", department:""});
+  const [show,setShow] = useState(false);
 
   const addLecturer = (e) => {
     e.preventDefault();
     //  login(formData, history);
      console.log(formData);
+     axios
+     .post(`${endpoints.addLecturer}`, formData)
+     .then(({ data: { objectValue } }) => {
+       console.log(objectValue);
+       setShow(true);
+       setFormData({ firstName: "", lastName: "",emailAddress:"",phoneNumber: "",address:"", department:""})
+     })
+     .catch((err) => {
+       console.log(err.response);
+       handleErrors(err);
+       setShow(false);
+     });
+ 
   };
     return (
         <>
+    <Success onClose={()=>setShow(false)} show={show} />
               <div id='wrapper' class='wrapper bg-ash'>
         <Nav />
         <div class='dashboard-page-one'>
@@ -85,7 +105,7 @@ export default function AddLecturer() {
                       <input value={formData.phoneNumber}
               onChange={(e) =>
                 setFormData({ ...formData, phoneNumber: e.target.value })
-              } type='number' placeholder='' class='form-control' />
+              } type='text' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>Email</label>

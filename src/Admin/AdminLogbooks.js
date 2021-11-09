@@ -1,10 +1,10 @@
 import React,{ useState, useEffect} from 'react';
 import Nav from '../Components/Nav';
-import LecturerSidebar from './LecturerSidebar';
+import AdminSidebar from './AdminSidebar';
 import { getAllLogbooks } from '../APIs/apiCalls';
 
 
-export default function StudentLogbook() {
+export default function AdminLogbook() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function StudentLogbook() {
       <div id='wrapper' class='wrapper bg-ash'>
         <Nav />
         <div class='dashboard-page-one'>
-          <LecturerSidebar />
+          <AdminSidebar />
           <div class='dashboard-content-one'>
             <div class='breadcrumbs-area'>
               <h3>Lecturer Dashboard</h3>

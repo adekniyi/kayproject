@@ -60,12 +60,12 @@ export default function AdminSidebar() {
                   </Link>
                 </li>
                 <li class='nav-item'>
-                  <Link to='/lecturer/logbooks' class='nav-link'>
+                  <Link to='/admin/logbooks' class='nav-link'>
                     <i class='fas fa-angle-right'></i>Assign Lecturer To Student
                   </Link>
                 </li>
                 <li class='nav-item'>
-                  <Link to='/lecturer/logbooks' class='nav-link'>
+                  <Link to='/admin/logbooks' class='nav-link'>
                     <i class='fas fa-angle-right'></i>Get Log books
                   </Link>
                 </li>

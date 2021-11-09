@@ -1,17 +1,48 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import Nav from './Nav';
 import Sidebar from './Sidebar';
+import axios from "axios";
+import { endpoints } from "../APIs/enpoints";
+import { handleErrors } from "../APIs/sharedUtils";
+import Success from "./Success"
 
 export default function MakePlacement() {
-  const [formData, setFormData] = useState({ firstName: "", lastName: "",program: "",companyName: "",companyAddress:"",companyEmail:"",sectionOfWork:"", registrationNumber: "",level:"",matricNumber:""});
+  const [formData, setFormData] = useState({ FirstName: "", LastName: "",Programm: "",CompanyName: "",CompanyAddress:"",EmailAddressOfCompany:"",SectionOfWork:"", RegistrationNumber: "",Level:"",MatricNumber:"", Department:""});
+  const [show,setShow] = useState(false);
+  const [profile, setProfile] = useState({});
 
+  useEffect(() => {
+    //   this might never throw an error, since we did checks on path"
+    const profileDetails = JSON.parse(localStorage.getItem("userDetails"));
+    if (profileDetails) {
+      setProfile(profileDetails);
+    } else {
+      // logout user
+    }
+  }, []);
   const makePlacement = (e) => {
     e.preventDefault();
     //  login(formData, history);
      console.log(formData);
+     axios
+    .post(`${endpoints.makePlacement}`, formData)
+    .then(({ data: { objectValue } }) => {
+      console.log(objectValue);
+      setShow(true);
+     // setFormData({ firstName: "", lastName: "",programm: "",companyName: "",companyAddress:"",emailAddressOfCompany:"",sectionOfWork:"", registrationNumber: "",level:"",matricNumber:"", department:""})
+    })
+    .catch((err) => {
+      console.log(err.response);
+      handleErrors(err);
+      setShow(false);
+    });
+
   };
+
+
   return (
     <>
+    <Success onClose={()=>setShow(false)} show={show} />
       <div id='wrapper' class='wrapper bg-ash'>
         <Nav />
         <div class='dashboard-page-one'>
@@ -60,65 +91,65 @@ export default function MakePlacement() {
                   <div class='row'>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>First Name *</label>
-                      <input value={formData.firstName}
+                      <input value={formData.FirstName}
               onChange={(e) =>
-                setFormData({ ...formData, firstName: e.target.value })
+                setFormData({ ...formData, FirstName: e.target.value })
               } type='text' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>Last Name *</label>
-                      <input value={formData.lastName}
+                      <input value={formData.LastName}
               onChange={(e) =>
-                setFormData({ ...formData, lastName: e.target.value })
+                setFormData({ ...formData, LastName: e.target.value })
               } type='text' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>Department *</label>
-                      <input value={formData.department}
+                      <input value={formData.Department}
               onChange={(e) =>
-                setFormData({ ...formData, department: e.target.value })
+                setFormData({ ...formData, Department: e.target.value })
               } type='text' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>Level *</label>
-                      <input value={formData.level}
+                      <input value={formData.Level}
               onChange={(e) =>
-                setFormData({ ...formData, level: e.target.value })
+                setFormData({ ...formData, Level: e.target.value })
               } type='text' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>Program</label>
-                      <input value={formData.program}
+                      <input value={formData.Programm}
               onChange={(e) =>
-                setFormData({ ...formData, program: e.target.value })
+                setFormData({ ...formData, Programm: e.target.value })
               } type='text' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>Company Name *</label>
-                      <input value={formData.companyName}
+                      <input value={formData.CompanyName}
               onChange={(e) =>
-                setFormData({ ...formData, companyName: e.target.value })
+                setFormData({ ...formData, CompanyName: e.target.value })
               } type='text' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>Company Address *</label>
-                      <input value={formData.companyAddress}
+                      <input value={formData.CompanyAddress}
               onChange={(e) =>
-                setFormData({ ...formData, companyAddress: e.target.value })
+                setFormData({ ...formData, CompanyAddress: e.target.value })
               } type='text' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>Company Email</label>
-                      <input value={formData.companyEmail}
+                      <input value={formData.EmailAddressOfCompany}
               onChange={(e) =>
-                setFormData({ ...formData, companyEmail: e.target.value })
+                setFormData({ ...formData, EmailAddressOfCompany: e.target.value })
               } type='email' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>Sector Of Work *</label>
-                      <input value={formData.sectionOfWork}
+                      <input value={formData.SectionOfWork}
               onChange={(e) =>
-                setFormData({ ...formData, sectionOfWork: e.target.value })
+                setFormData({ ...formData, SectionOfWork: e.target.value })
               } type='text' placeholder='' class='form-control' />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
@@ -127,9 +158,9 @@ export default function MakePlacement() {
                         type='number'
                         placeholder=''
                         class='form-control'
-                        value={formData.matricNumber}
+                        value={formData.MatricNumber}
               onChange={(e) =>
-                setFormData({ ...formData, matricNumber: e.target.value })
+                setFormData({ ...formData, MatricNumber: e.target.value })
               }
                       />
                     </div>
@@ -139,15 +170,15 @@ export default function MakePlacement() {
                         type='number'
                         placeholder=''
                         class='form-control'
-                        value={formData.registrationNumber}
+                        value={formData.RegistrationNumber}
               onChange={(e) =>
-                setFormData({ ...formData, registrationNumber: e.target.value })
+                setFormData({ ...formData, RegistrationNumber: e.target.value })
               }
                       />
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label class='text-dark-medium'>Offer Letter</label>
-                      <input type='file' class='form-control-file' />
+                      <input name="offerLetter" type='file' class='form-control-file' />
                     </div>
                     <div class='col-12 form-group mg-t-8'>
                       <button

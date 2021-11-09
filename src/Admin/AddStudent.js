@@ -1,18 +1,38 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import Nav from '../Components/Nav';
 import AdminSidebar from './AdminSidebar';
+import axios from "axios";
+import { endpoints } from "../APIs/enpoints";
+import { handleErrors } from "../APIs/sharedUtils";
+import Success from "../Components/Success"
 
 export default function AddStudent() {
   const [formData, setFormData] = useState({ firstName: "", lastName: "",emailAddress:"",phoneNumber: "",gender: "",dob:"",state:"",lga:"",address:"", department:"",level:"",matricNumber:""});
+  const [show,setShow] = useState(false);
 
   const addStudent = (e) => {
     e.preventDefault();
     //  login(formData, history);
      console.log(formData);
+     axios
+    .post(`${endpoints.addStudent}`, formData)
+    .then(({ data: { objectValue } }) => {
+      console.log(objectValue);
+      setShow(true);
+      setFormData({ firstName: "", lastName: "",emailAddress:"",phoneNumber: "",gender: "",dob:"",state:"",lga:"",address:"", department:"",level:"",matricNumber:""})
+    })
+    .catch((err) => {
+      console.log(err.response);
+      handleErrors(err);
+      setShow(false);
+    });
+
   };
+
 
   return (
     <>
+    <Success onClose={()=>setShow(false)} show={show} />
       <div id='wrapper' class='wrapper bg-ash'>
         <Nav />
         <div class='dashboard-page-one'>
@@ -142,7 +162,7 @@ export default function AddStudent() {
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label>Date Of Birth *</label>
                       <input
-                        type='text'
+                        type='date'
                         placeholder='dd/mm/yyyy'
                         class='form-control air-datepicker'
                         data-position='bottom right'
@@ -151,7 +171,6 @@ export default function AddStudent() {
                           setFormData({ ...formData, dob: e.target.value })
                         }
                       />
-                      <i class='far fa-calendar-alt'></i>
                     </div>
                     <div class='col-xl-3 col-lg-6 col-12 form-group'>
                       <label class='text-dark-medium'>Student Picture</label>

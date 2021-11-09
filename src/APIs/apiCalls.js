@@ -71,6 +71,19 @@ export const getAllSupervisors = (setData) => {
     });
 };
 
+export const getAllLogbooks = (setData) => {
+  axios
+    .get(`${endpoints.getLogbooks}`)
+    .then(({ data: { objectValue } }) => {
+      setData(objectValue);
+      console.log(objectValue);
+    })
+    .catch((err) => {
+      console.log(err.response);
+      handleErrors(err);
+    });
+};
+
 export const addLogboook = (payload) => {
   
   axios

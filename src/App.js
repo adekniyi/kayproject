@@ -11,6 +11,7 @@ import AllStudents from './Admin/AllStudents';
 import AddStudent from './Admin/AddStudent';
 import AddLecturer from './Admin/AddLecturer';
 import AddSupervisor from './Admin/AddSupervisor';
+import AdminLogbooks from './Admin/AdminLogbooks';
 import MakePlacement from './Components/MakePlacement';
 import Logbook from './Components/Logbook';
 import Login from './Components/Login';
@@ -106,6 +107,11 @@ const MainComponent = withRouter(({ location, history, match }) => (
                 exact
                 path={`${url}/addSupervisor`}
                 component={() => <AddSupervisor />}
+              />
+                <Route
+                exact
+                path={`${url}/logbooks`}
+                component={() => <AdminLogbooks />}
               />
             </Switch>
           </>
