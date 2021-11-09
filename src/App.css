@@ -27,6 +27,8 @@
   border-bottom: 1px solid #eee;
 }
 
+.nn-nav {display: flex !important;;}
+
 .nn-nav img{
   width: 50px;
 }
@@ -37,4 +39,11 @@
 }
 .sidebar-color {
   background-color: green !important;
+}
+
+.soft-siwes{
+  /* font-size:20px; */
+  padding-left: 3px;
+  font-weight:600;
+ text-transform: uppercase;
 }

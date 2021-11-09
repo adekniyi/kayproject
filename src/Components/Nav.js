@@ -13,7 +13,7 @@ export default function Nav() {
         <div class='nav-bar-header-one'>
           <div class='header-logo'>
             <a className="nn-nav" href='index.html'>
-              <img src={logo} alt='logo' /> SOFT SIWES 
+              <img src={logo} alt='logo' /> <span className="soft-siwes">SOFT SIWES<br/> federal poly<br/>technic Ilaro</span>
             </a>
           </div>
           <div class='toggle-button sidebar-toggle'>
