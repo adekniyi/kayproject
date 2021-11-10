@@ -4,10 +4,16 @@ import AdminSidebar from './AdminSidebar';
 import axios from "axios";
 import { endpoints } from "../APIs/enpoints";
 import { handleErrors } from "../APIs/sharedUtils";
+import { assignStudent } from "../APIs/apiCalls";
 import Success from "../Components/Success"
 
 export default function AddStudent() {
   const [formData, setFormData] = useState({ firstName: "", lastName: "",emailAddress:"",phoneNumber: "",gender: "",dob:"",state:"",lga:"",address:"", department:"",level:"",matricNumber:""});
+  const [assign,setAssign] = useState({
+    students: 0,
+    lecturer: 0,
+    industrialSupervisorId: 0
+  })
   const [show,setShow] = useState(false);
 
   const addStudent = (e) => {
@@ -18,6 +24,9 @@ export default function AddStudent() {
     .post(`${endpoints.addStudent}`, formData)
     .then(({ data: { objectValue } }) => {
       console.log(objectValue);
+      assign.students = objectValue?.studentId;
+      console.log(assign);
+      assignStudent(assign);
       setShow(true);
       setFormData({ firstName: "", lastName: "",emailAddress:"",phoneNumber: "",gender: "",dob:"",state:"",lga:"",address:"", department:"",level:"",matricNumber:""})
     })
@@ -185,6 +194,30 @@ export default function AddStudent() {
                         value={formData.phoneNumber}
                         onChange={(e) =>
                           setFormData({ ...formData, phoneNumber: e.target.value })
+                        }
+                      />
+                    </div>
+                    <div class='col-xl-3 col-lg-6 col-12 form-group'>
+                      <label>Institutional Supervisor Id *</label>
+                      <input
+                        type='int'
+                        placeholder=''
+                        class='form-control'
+                        value={assign.lecturer}
+                        onChange={(e) =>
+                          setAssign({ ...assign, lecturer: e.target.value })
+                        }
+                      />
+                    </div>
+                    <div class='col-xl-3 col-lg-6 col-12 form-group'>
+                      <label>Industrial Supervisor Id *</label>
+                      <input
+                        type='int'
+                        placeholder=''
+                        class='form-control'
+                        value={assign.industrialSupervisorId}
+                        onChange={(e) =>
+                          setAssign({ ...assign, industrialSupervisorId: e.target.value })
                         }
                       />
                     </div>

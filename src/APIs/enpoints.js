@@ -11,4 +11,5 @@ export const endpoints = {
   addLecturer: `${base_url}lecturer`,
   addSupervisor: `${base_url}IndustrialSupervisor`,
   getLogbooks: `${base_url}LogBook/logbooks`,
+  assignStudent: `${base_url}SiwesCo/assignstudentToLecturer`,
 };

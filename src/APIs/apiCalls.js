@@ -101,6 +101,19 @@ export const addLogboook = (payload) => {
     });
 };
 
+export const assignStudent = (payload) => {
+  
+  axios
+    .post(`${endpoints.assignStudent}`, payload)
+    .then(({ data: { objectValue } }) => {
+      console.log(objectValue);
+    })
+    .catch((err) => {
+      console.log(err.response);
+      handleErrors(err);
+    });
+};
+
 export const getAllCandidatesById = (id, setCandidates, loading) => {
   console.log("making request...");
   axios
